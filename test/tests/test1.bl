@@ -1,6 +1,5 @@
-(#define EXPECTED_TEST_OUTPUT "72" ";")
+(#include "../../testlib.h")
 
-(#include <stdio.h>)
 (#include <stdarg.h>)
 (#include <string.h>)
 (#include <malloc.h>)
@@ -13,13 +12,13 @@
 (defn str_from_fmt->char* [fmt->char* ...])
 
 (defn main->int [void]
-    (fputs EXPECTED_TEST_OUTPUT stdout)
+    (EXPECT_RESULT "72")
     (if (== NUM_1 (MAX NUM_1, NUM_2))
         (puts "This won't happen[] [] '(()  ) \" \\\"")
         (let [s->char* (str_from_fmt "%s %d" "Hello" 123)
               len->int (strlen s)
               lx8->int (<< len 3)]
-            (printf "%d" lx8)))
+            (ACTUAL_RESULT "%d" lx8)))
     (return 0))
 
 (defn str_from_fmt->char* [fmt->char* ...]

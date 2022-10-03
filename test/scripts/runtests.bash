@@ -20,7 +20,7 @@ for test_x in tests/test*.bl
 do
   test_name=$(echo "$test_x" | sed -E 's/tests\/(.*)\.bl/\1/')
 
-  gcc tests/out/"$test_name".bl.c -o "$test_name" || clean_up_and_exit "Error compiling $test_x.c; ec $?"
+  gcc tests/out/"$test_name".bl.c testlib.c -o "$test_name" || clean_up_and_exit "Error compiling $test_x.c; ec $?"
 
   test_exit_code=$?
 
@@ -34,7 +34,7 @@ do
   if [[ "$test_expected_result" == "$test_actual_result" ]]; then
     echo -e "\n$test_x SUCCESS; ec $test_exit_code"
   else
-    echo -e "\n$test_x FAIL; expected: \"$test_expected_result\", actual: \"$test_actual_result\"; ec $test_exit_code"
+    echo -e "\n$test_x FAIL; expected: '$test_expected_result', actual: '$test_actual_result'; ec $test_exit_code"
   fi
 done
 
