@@ -1,0 +1,29 @@
+(#include <stdio.h>)
+(#include <stdarg.h>)
+(#include <string.h>)
+(#include <malloc.h>)
+
+(#define NUM_1 1)
+(#define NUM_2 2)
+
+(#define (MAX a b) '(a>b?a:b))
+
+(defn str_from_fmt->char* [fmt->char* ...])
+
+(defn main->int [void]
+    (if (== NUM_1 (MAX NUM_1, NUM_2))
+        (puts "This won't happen[] [] '(()  ) \" \\\"")
+        (let [s->char* (str_from_fmt "%s %d" "Hello" 123)
+              len->int (strlen s)
+              lx8->int (<< len 3)]
+            (printf "%d" lx8)))
+    (return 0))
+
+(defn str_from_fmt->char* [fmt->char* ...]
+    (let [args->va_list NULL]
+        (va_start args, fmt)
+        (let [length->int (vsnprintf NULL, 0, fmt, args)
+              buff->char* (malloc (+ length 1))]
+           (vsprintf buff, fmt, args)
+           (va_end args)
+           (return buff))))

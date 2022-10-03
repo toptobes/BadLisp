@@ -1,0 +1,19 @@
+(#include <time.h>)
+(#include <stdio.h>)
+(#include <stdlib.h>)
+
+(defn main->int [argc->int argv->char**]
+    (srand (time NULL))
+    (let [n1->int (rand),
+          n2->int (rand),
+          buf[2]->char [],]
+        (printf "What is %d * %d? " n1 n2)
+        (if (== NULL (fgets buf 2000 stdin))
+            (do
+                (puts "\ninvalid input")
+                (return 1))
+            (do
+                (def answer->int (atoi buf))
+                (if (== answer (* n1 n2))
+                    (puts "\nCorrect")
+                    (printf "\nNo; the answer was %d\n" (* n1 n2)))))))
