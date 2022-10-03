@@ -4,9 +4,9 @@
 
 (defn main->int [argc->int argv->char**]
     (srand (time NULL))
-    (let [n1->int (rand),
-          n2->int (rand),
-          buf[2]->char [],]
+    (let [n1->int (rand)
+          n2->int (rand)
+          buf[2]->char []]
         (printf "What is %d * %d? " n1 n2)
         (if (== NULL (fgets buf 2000 stdin))
             (do

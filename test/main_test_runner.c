@@ -3,11 +3,11 @@
 #include "../src/bad_lisp.h"
 #include "../src/util.h"
 
-const char *PLAYGROUND_FILE_PATH_IN  = "C:\\Users\\wanna\\Documents\\GitHub\\my-other-lisp\\test\\playground.bl";
-const char *PLAYGROUND_FILE_PATH_OUT = "C:\\Users\\wanna\\Documents\\GitHub\\my-other-lisp\\test\\playground.bl.c";
-
 int main(void)
 {
+    const char *PLAYGROUND_FILE_PATH_IN  = "C:\\Users\\wanna\\Documents\\GitHub\\my-other-lisp\\test\\playground.bl";
+    const char *PLAYGROUND_FILE_PATH_OUT = "C:\\Users\\wanna\\Documents\\GitHub\\my-other-lisp\\test\\playground.bl.c";
+
     char *code = transpile_file(PLAYGROUND_FILE_PATH_IN, PLAYGROUND_FILE_PATH_OUT, NULL);
     puts(code);
     return 0;
