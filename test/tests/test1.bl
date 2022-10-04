@@ -1,4 +1,4 @@
-(#include "../../testlib.h")
+(#include "testlib.h")
 
 (#include <stdarg.h>)
 (#include <string.h>)
@@ -9,23 +9,23 @@
 
 (#define (MAX a b) '(a>b?a:b))
 
-(defn str_from_fmt->char* [fmt->char* ...])
+(defn str_from_fmt::char* [fmt::char* ...])
 
-(defn main->int [void]
-    (EXPECT_RESULT "72")
+(defn main::int [void]
+    ($EXPECT_RESULT "72")
     (if (== NUM_1 (MAX NUM_1, NUM_2))
         (puts "This won't happen[] [] '(()  ) \" \\\"")
-        (let [s->char* (str_from_fmt "%s %d" "Hello" 123)
-              len->int (strlen s)
-              lx8->int (<< len 3)]
-            (ACTUAL_RESULT "%d" lx8)))
+        (let [s::char* (str_from_fmt "%s %d" "Hello" 123)
+              len::int (strlen s)
+              lx8::int (<< len 3)]
+            ($ACTUAL_RESULT "%d" lx8)))
     (return 0))
 
-(defn str_from_fmt->char* [fmt->char* ...]
-    (let [args->va_list NULL]
-        (va_start args, fmt)
-        (let [length->int (vsnprintf NULL, 0, fmt, args)
-              buff->char* (malloc (+ length 1))]
-           (vsprintf buff, fmt, args)
-           (va_end args)
+(defn str_from_fmt::char* [fmt::char* ...]
+    (let [argv::va_list NULL]
+        (va_start argv, fmt)
+        (let [length::int (vsnprintf NULL, 0, fmt, argv)
+              buff::char* (malloc (+ length 1))]
+           (vsprintf buff, fmt, argv)
+           (va_end argv)
            (return buff))))

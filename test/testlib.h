@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-#define EXPECT_RESULT(r) printf(r ";")
-#define ACTUAL_RESULT(f, r) printf(f, r)
+#define $EXPECT_RESULT(result) printf(result ";")
+#define $ACTUAL_RESULT(fmt, ...) printf(fmt, __VA_ARGS__)
 
 #endif

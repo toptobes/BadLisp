@@ -3,24 +3,23 @@ clean_up_and_exit ()
     ARG=$?
 
     if [[ $1 ]]; then
-        echo -e "\n> $1"
+      echo -e "\n> $1"
     fi
 
-    rm -f -- *.exe
-    rm ../src/*.gch -f
+    rm -f -- *.exe -f
     exit $ARG
 }
 
 mkdir -p tests/out
 
-gcc test_runner.c ../src/*.? -o transpile_tests || clean_up_and_exit "Error compiling test_runner; ec $?"
+gcc test_runner.c ../src/*.c -o transpile_tests || clean_up_and_exit "Error compiling test_runner; ec $?"
 ./transpile_tests.exe
 
 for test_x in tests/test*.bl
 do
   test_name=$(echo "$test_x" | sed -E 's/tests\/(.*)\.bl/\1/')
 
-  gcc tests/out/"$test_name".bl.c testlib.c -o "$test_name" || clean_up_and_exit "Error compiling $test_x.c; ec $?"
+  gcc tests/out/"$test_name".bl.c -I. -o "$test_name" || clean_up_and_exit "Error compiling $test_x.c; ec $?"
 
   test_exit_code=$?
 

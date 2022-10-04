@@ -1,0 +1,7 @@
+(#include "../../../src/dynamic_string.h")
+
+(defmacro $ACTUAL_RESULT
+    (let [str::DynamicString* (dstr_new 100)]
+        (dstr_cat       str "printf(")
+        (dstr_cat_alld  str list->argc list->argv ",")
+        (dstr_cat       str ")")))
