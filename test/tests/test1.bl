@@ -14,7 +14,7 @@
 (defn main::int [void]
     ($EXPECT_RESULT "72")
     (if (== NUM_1 (MAX NUM_1, NUM_2))
-        (puts "This won't happen[] [] '(()  ) \" \\\"")
+        (puts "This won't happen")
         (let [s::char* (str_from_fmt "%s %d" "Hello" 123)
               len::int (strlen s)
               lx8::int (<< len 3)]

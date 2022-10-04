@@ -1,8 +1,15 @@
-//
-// Created by gupta_919456 on 10/4/2022.
-//
+#ifndef BAD_LISP_MACROS_H
+#define BAD_LISP_MACROS_H
 
-#ifndef MY_OTHER_LISP_MACROS_H
-#define MY_OTHER_LISP_MACROS_H
+#include "list.h"
 
-#endif //MY_OTHER_LISP_MACROS_H
+typedef struct {
+    char *name;
+    char *format;
+    char *delimiter;
+} Macro;
+
+Macro* expand_defmacro(List*, int*);
+char* expand_macro(List*, Macro*, int*);
+
+#endif

@@ -1,5 +1,5 @@
-#ifndef MY_OTHER_LISP_BAD_LISP_H
-#define MY_OTHER_LISP_BAD_LISP_H
+#ifndef BAD_LISP_BAD_LISP_H
+#define BAD_LISP_BAD_LISP_H
 
 char* transpile_string(const char*, int*);
 char* transpile_file(const char*, const char*, int*);

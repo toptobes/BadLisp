@@ -1,5 +1,5 @@
-#ifndef MY_OTHER_LISP_SPECIAL_FORMS_H
-#define MY_OTHER_LISP_SPECIAL_FORMS_H
+#ifndef BAD_LISP_SPECIAL_FORMS_H
+#define BAD_LISP_SPECIAL_FORMS_H
 
 #include "list.h"
 
@@ -19,7 +19,7 @@ typedef char *SpecialForm_t;
 
 typedef struct {
     SpecialForm_t form;
-    char* (*expander)(List*, int *);
+    char* (*expander)(List*, int*);
 } Special_Form_Expander;
 
 static const Special_Form_Expander special_forms[] = {
@@ -52,4 +52,4 @@ static const Special_Form_Expander special_forms[] = {
 
 static const int NUM_SPECIAL_FORMS = sizeof(special_forms) / sizeof(*special_forms);
 
-#endif //MY_OTHER_LISP_SPECIAL_FORMS_H
+#endif //BAD_LISP_SPECIAL_FORMS_H

@@ -5,16 +5,20 @@
 
 static char* expand_typed_var(char *var, int *error)
 {
-    char *name = strtok(var, "->");
-    char *type = strtok(NULL, "->");
+    char *name = strtok(var, "::");
+    char *type = strtok(NULL, "::");
 
     DynamicString *declaration = dstr_new(2 << 5);
+
+    int num_brackets = 0;
 
     if (type != NULL)
     {
         for (int i = 0; i < strlen(type); i++)
         {
-            if (type[i] == '.')
+            num_brackets += type[i] == '[';
+
+            if (type[i] == '.' || type[i] == '[' || type[i] == ']')
             {
                 type[i] = ' ';
             }
@@ -25,6 +29,11 @@ static char* expand_typed_var(char *var, int *error)
     }
 
     dstr_cat(declaration, name);
+
+    for (int i = 0; i < num_brackets; i++)
+    {
+        dstr_cat(declaration, "[]");
+    }
 
     return dstr_destroy_wrapper(&declaration);
 }

@@ -23,7 +23,7 @@ char* preprocess(const char *code, int *error)
     for (int i = 0; i < strlen(code); i++)
     {
         is_array_declaration =
-                (i > 0) && (is_array_declaration || ((code[i] == '[') && (code[i - 1] != ')') && (code[i - 1] != ' ')));
+                (i > 0) && (is_array_declaration || ((code[i] == '[') && (code[i - 1] == ':')));
 
         switch (code[i])
         {
