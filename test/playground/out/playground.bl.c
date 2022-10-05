@@ -1,2 +1,2 @@
 #include "../../../src/dynamic_string.h"
-defmacro($ACTUAL_RESULT,{ char  fmt[] = "Hello world!!";})
+defmacro($ACTUAL_RESULT,"printf(%0,%n)")
