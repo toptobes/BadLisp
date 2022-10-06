@@ -1,3 +1,8 @@
-(#include "../../../src/dynamic_string.h")
+(#include <stdio.h>)
 
-(defmacro $ACTUAL_RESULT "printf(%0,%n)")
+(defmacro $ACTUAL_RESULT "printf(%0,%r1)")
+(defmacro $EXPECT_RESULT "fputs(%0,stdout)")
+
+(defn main::int [void]
+    ($EXPECT_RESULT "Hello!")
+    ($ACTUAL_RESULT "%s" "Hello!"))

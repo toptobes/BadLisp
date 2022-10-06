@@ -9,6 +9,8 @@ typedef List *Listp;
 
 #define STACK_TYPE Listp
 #include "stack.h"
+#include "macros.h"
+
 #undef STACK_TYPE
 
 static char* extract_string(const char*, int*);
@@ -149,13 +151,32 @@ static char* extract_string(const char* code, int* i)
     return dstr_destroy_wrapper(&string);
 }
 
-char* expand(List* list, int *error)
+List* reg_macros(List* list, MacroList* macros, int *error)
 {
     for (int i = 0; i < list->argc; i++)
     {
         if (list->args[i].type == LIST)
         {
-            list->args[i].as_word = expand(list->args[i].as_list, error);
+            list->args[i].as_list = reg_macros(list->args[i].as_list, macros, error);
+        }
+    }
+
+    if (strcmp(list->func_name, "defmacro") == 0)
+    {
+        Macro *macro = create_macro(list, error);
+        macrolist_add(macros, macro);
+    }
+
+    return list;
+}
+
+char* expand(List* list, MacroList* macros, int *error)
+{
+    for (int i = 0; i < list->argc; i++)
+    {
+        if (list->args[i].type == LIST)
+        {
+            list->args[i].as_word = expand(list->args[i].as_list, macros, error);
             list->args[i].type = WORD;
         }
     }
@@ -170,10 +191,20 @@ char* expand(List* list, int *error)
         }
     }
 
-    return expand_default(list, error);
+    for (int i = 0; i < macros->length; i++)
+    {
+        bool is_macro = strcmp(macros->macros[i]->name, list->func_name) == 0;
+
+        if (is_macro)
+        {
+            return expand_macro(list, macros->macros[i], error);
+        }
+    }
+
+    return expand_function(list, error);
 }
 
-char *expand_default(List *list, int *error)
+char *expand_function(List *list, int *error)
 {
     DynamicString *code = dstr_new_copy(list->func_name);
     dstr_append(code, '(');

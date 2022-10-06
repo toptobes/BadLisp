@@ -1,4 +1,5 @@
 #include <string.h>
+#include <malloc.h>
 #include "util.h"
 #include "dynamic_string.h"
 #include "special_forms.h"
@@ -36,21 +37,6 @@ static char* expand_typed_var(char *var, int *error)
     }
 
     return dstr_destroy_wrapper(&declaration);
-}
-
-char* expand_do(List* list, int *error)
-{
-    DynamicString *code = dstr_new(2<<8);
-    dstr_append(code, '{');
-
-    for (int i = 0; i < list->argc; i++)
-    {
-        dstr_cat(code, list->args[i].as_word);
-        dstr_append(code, ';');
-    }
-
-    dstr_append(code, '}');
-    return dstr_destroy_wrapper(&code);
 }
 
 char* expand_if(List* list, int* error)
@@ -192,13 +178,6 @@ char* expand_quote(List* list, int *error)
     return dstr_destroy_wrapper(&code);
 }
 
-char* expand_defarr(List* list, int *error)
-{
-    char *arr_declaration = expand_typed_var(list->args[0].as_word, error);
-    char *arr_size = list->args[1].as_word;
-    return str_from_format("%s[%s];", arr_declaration, arr_size);
-}
-
 char* expand_vector(List* list, int *error)
 {
     DynamicString *code = dstr_new(2<<8);
@@ -216,6 +195,11 @@ char* expand_vector(List* list, int *error)
 
     dstr_append(code, '}');
     return dstr_destroy_wrapper(&code);
+}
+
+char* expand_defmacro(List* list, int *error)
+{
+    return calloc(1, 1);
 }
 
 char* expand_global_wrapper(List* list, int *error)

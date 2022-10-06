@@ -4,12 +4,21 @@
 #include "list.h"
 
 typedef struct {
-    char *name;
-    char *format;
-    char *delimiter;
+    char* name;
+    char* format;
+    char* delimiter;
 } Macro;
 
-Macro* expand_defmacro(List*, int*);
-char* expand_macro(List*, Macro*, int*);
+typedef struct {
+    size_t  length;
+    size_t  backing_arr_size;
+    Macro** macros;
+} MacroList;
+
+Macro*  create_macro(List *list, int *error);
+char*   expand_macro(List*, Macro*, int*);
+
+MacroList*  macrolist_new(int);
+void        macrolist_add(MacroList*, Macro*);
 
 #endif

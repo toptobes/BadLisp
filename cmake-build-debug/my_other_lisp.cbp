@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="my_other_lisp"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="my_other_lisp">
+				<Option output="C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/my_other_lisp.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/gupta_919456/AppData/Local/JetBrains/CLion 2022.2.3/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
+					<Add directory="C:/Users/gupta_919456/AppData/Local/JetBrains/CLion 2022.2.3/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
+					<Add directory="C:/Users/gupta_919456/AppData/Local/JetBrains/CLion 2022.2.3/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
+					<Add directory="C:/Users/gupta_919456/AppData/Local/JetBrains/CLion 2022.2.3/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 my_other_lisp"/>
+					<CompileFile command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="my_other_lisp/fast">
+				<Option output="C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/my_other_lisp.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/gupta_919456/AppData/Local/JetBrains/CLion 2022.2.3/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
+					<Add directory="C:/Users/gupta_919456/AppData/Local/JetBrains/CLion 2022.2.3/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
+					<Add directory="C:/Users/gupta_919456/AppData/Local/JetBrains/CLion 2022.2.3/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
+					<Add directory="C:/Users/gupta_919456/AppData/Local/JetBrains/CLion 2022.2.3/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 my_other_lisp/fast"/>
+					<CompileFile command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/GUPTA_~1/AppData/Local/JETBRA~1/CLION2~1.3/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/bad_lisp.c">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/bad_lisp.h">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/dynamic_string.c">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/dynamic_string.h">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/fileio.c">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/fileio.h">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/list.c">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/list.h">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/macros.c">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/macros.h">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/special_forms.c">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/special_forms.h">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/stack.h">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/transpile.c">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/transpile.h">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/util.c">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/src/util.h">
+			<Option target="my_other_lisp"/>
+		</Unit>
+		<Unit filename="C:/Users/gupta_919456/CLionProjects/BadLisp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

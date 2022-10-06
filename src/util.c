@@ -63,3 +63,16 @@ void skip_string(const char *code, int *i)
         is_escaped = (code[(*i)++] == '\\') && !is_escaped;
     }
 }
+
+void str_remove_surrounding_quotes(char *code)
+{
+    if (code[strlen(code) - 1] == '"')
+    {
+        code[strlen(code) - 1] = '\0';
+    }
+
+    if (code[0] == '"')
+    {
+        memmove(code, code + 1, strlen(code));
+    }
+}
