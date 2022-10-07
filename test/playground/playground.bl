@@ -2,7 +2,7 @@
 (#include <stdio.h>)
 (#include <stdlib.h>)
 
-(defn main->int [argc->int argv->char**]
+(defn main->int [rest_c->int argv->char**]
     (srand (time NULL))
     (let [n1->int (rand)
           n2->int (rand)
