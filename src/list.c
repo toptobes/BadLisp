@@ -6,8 +6,9 @@
 List* list_new()
 {
     List *list = malloc(sizeof(*list));
-    list->argc = 0;
-    list->args = malloc(10 * sizeof(ListElement));
+    list->rest_c = 0;
+    list->rest = malloc(10 * sizeof(ListElement));
+    list->backing_arr_size = 10;
     return list;
 }
 
@@ -19,24 +20,24 @@ static void indent(int num_tabs)
     }
 }
 
-void list_print(List* list, int depth)
+void list_print(const List* self, int depth)
 {
     indent(depth-1);
     puts("(");
 
     indent(depth);
-    puts(list->func_name);
+    puts(self->head);
 
-    for (int i = 0; i < list->argc; i++)
+    for (int i = 0; i < self->rest_c; i++)
     {
-        if (list->args[i].type == WORD)
+        if (self->rest[i].type == WORD)
         {
             indent(depth);
-            puts(list->args[i].as_word);
+            puts(self->rest[i].as_word);
         }
         else
         {
-            list_print(list->args[i].as_list, depth + 1);
+            list_print(self->rest[i].as_list, depth + 1);
         }
     }
 
@@ -44,24 +45,30 @@ void list_print(List* list, int depth)
     puts(")");
 }
 
-void list_add_string(List *list, const char *string, bool is_func_name)
+void list_add_word(List *self, const char *word, bool is_func_name)
 {
-    char *word = strdup(string);
+    char *word_cpy = strdup(word);
 
     if (is_func_name)
     {
-        list->func_name = word;
+        self->head = word_cpy;
     }
     else
     {
-        list->args[list->argc].type = WORD;
-        list->args[list->argc].as_word = word;
-        list->argc++;
+        self->rest[self->rest_c].type = WORD;
+        self->rest[self->rest_c].as_word = word_cpy;
+        self->rest_c++;
     }
 }
 
-void list_add_list(List *list, List *list_to_nest)
+void list_add_list(List *self, List *list_to_nest)
 {
-    list->args[list->argc].type = LIST;
-    list->args[list->argc++].as_list = list_to_nest;
+    self->rest[self->rest_c].type = LIST;
+    self->rest[self->rest_c++].as_list = list_to_nest;
+}
+
+void list_add_vect(List *self, Vect *vector)
+{
+    self->rest[self->rest_c].type = VECT;
+    self->rest[self->rest_c++].as_vect = vector;
 }

@@ -2,7 +2,7 @@
 #include <malloc.h>
 #include "fileio.h"
 
-char *readcode(const char *file_path_in)
+char* readcode(const char *file_path_in)
 {
     FILE *file = fopen(file_path_in, "r");
 

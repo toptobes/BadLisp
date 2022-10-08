@@ -3,50 +3,52 @@
 
 #include "list.h"
 
-char* expand_do(List*, int *);
-char* expand_if(List*, int *);
-char* expand_def(List*, int *);
-char* expand_let(List*, int *);
-char* expand_defn(List*, int *);
-char* expand_quote(List*, int *);
-char* expand_vector(List*, int *);
-char* expand_defmacro(List *list, int *error);
-char* expand_operator(List*, int *);
-char* expand_global_wrapper(List*, int *);
-char* expand_c_preprocessor_command(List*, int *);
+#define DEF_SPECIAL_FORM(name) char* expand_##name(const List *list, int *error) // NOLINT(bugprone-macro-parentheses)
 
-typedef char *SpecialForm_t;
+DEF_SPECIAL_FORM(   do                       );
+DEF_SPECIAL_FORM(   if                       );
+DEF_SPECIAL_FORM(   let                      );
+DEF_SPECIAL_FORM(   def                      );
+DEF_SPECIAL_FORM(   defn                     );
+DEF_SPECIAL_FORM(   quote                    );
+DEF_SPECIAL_FORM(   vector                   );
+DEF_SPECIAL_FORM(   defmacro                 );
+DEF_SPECIAL_FORM(   operator                 );
+DEF_SPECIAL_FORM(   global_wrapper           );
+DEF_SPECIAL_FORM(   c_preprocessor_command   );
+
+#undef DEF_SPECIAL_FORM
 
 typedef struct {
-    SpecialForm_t form;
-    char* (*expander)(List*, int*);
-} Special_Form_Expander;
+    char* name;
+    char* (*expander)(const List*, int*);
+} SpecialForm;
 
-static const Special_Form_Expander special_forms[] = {
-    { .form = "if",       .expander = expand_if},
-    { .form = "def",      .expander = expand_def},
-    { .form = "let",      .expander = expand_let},
-    { .form = "defn",     .expander = expand_defn},
-    { .form = "quote",    .expander = expand_quote},
-    { .form = "vector",   .expander = expand_vector},
-    { .form = "defmacro", .expander = expand_defmacro},
-    { .form = "^root",    .expander = expand_global_wrapper},
-    { .form = "#",        .expander = expand_c_preprocessor_command},
-    { .form = "+",        .expander = expand_operator},
-    { .form = "-",        .expander = expand_operator},
-    { .form = "*",        .expander = expand_operator},
-    { .form = "/",        .expander = expand_operator},
-    { .form = "<",        .expander = expand_operator},
-    { .form = ">",        .expander = expand_operator},
-    { .form = "<=",       .expander = expand_operator},
-    { .form = ">=",       .expander = expand_operator},
-    { .form = "<<",       .expander = expand_operator},
-    { .form = ">>",       .expander = expand_operator},
-    { .form = "&&",       .expander = expand_operator},
-    { .form = "||",       .expander = expand_operator},
-    { .form = "^",        .expander = expand_operator},
-    { .form = "==",       .expander = expand_operator},
-    { .form = "!=",       .expander = expand_operator},
+static const SpecialForm special_forms[] = {
+    { .name = "if",       .expander = expand_if},
+    { .name = "def",      .expander = expand_def},
+    { .name = "let",      .expander = expand_let},
+    { .name = "defn",     .expander = expand_defn},
+    { .name = "quote",    .expander = expand_quote},
+    { .name = "vector",   .expander = expand_vector},
+    { .name = "defmacro", .expander = expand_defmacro},
+    { .name = "^root",    .expander = expand_global_wrapper},
+    { .name = "#",        .expander = expand_c_preprocessor_command},
+    { .name = "+",        .expander = expand_operator},
+    { .name = "-",        .expander = expand_operator},
+    { .name = "*",        .expander = expand_operator},
+    { .name = "/",        .expander = expand_operator},
+    { .name = "<",        .expander = expand_operator},
+    { .name = ">",        .expander = expand_operator},
+    { .name = "<=",       .expander = expand_operator},
+    { .name = ">=",       .expander = expand_operator},
+    { .name = "<<",       .expander = expand_operator},
+    { .name = ">>",       .expander = expand_operator},
+    { .name = "&&",       .expander = expand_operator},
+    { .name = "||",       .expander = expand_operator},
+    { .name = "^",        .expander = expand_operator},
+    { .name = "==",       .expander = expand_operator},
+    { .name = "!=",       .expander = expand_operator},
 };
 
 static const int NUM_SPECIAL_FORMS = sizeof(special_forms) / sizeof(*special_forms);

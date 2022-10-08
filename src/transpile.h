@@ -4,11 +4,10 @@
 #include "list.h"
 #include "macros.h"
 
-char* preprocess(const char*, int*);
-List* tokenize(char*, int*);
-List* reg_macros(List*, MacroList*, int*);
-char* expand(List*, MacroList*, int*);
+char* preprocess(const char *code, int *error);
+List* tokenize(const char *code, int *error);
+char* expand(const List *list, int *error);
 
-char* expand_function(List *list, int *error);
+char* expand_function(const List *list, int *error);
 
 #endif

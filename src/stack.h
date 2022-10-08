@@ -15,7 +15,7 @@ typedef struct {
 
 #define STACK_CREATE(T) WITH_TYPE_PREFIX(stack_create, T)
 
-STACK(STACK_TYPE) *STACK_CREATE(STACK_TYPE)(size_t size)
+STACK(STACK_TYPE)* STACK_CREATE(STACK_TYPE)(size_t size)
 {
     STACK(STACK_TYPE) *stack;
     stack = malloc(sizeof(*stack) + sizeof(STACK_TYPE) * size);

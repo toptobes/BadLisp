@@ -39,27 +39,27 @@ static char* expand_typed_var(char *var, int *error)
     return dstr_destroy_wrapper(&declaration);
 }
 
-char* expand_if(List* list, int* error)
+char* expand_if(const List *list, int *error)
 {
-    char *else_statement = (list->args[2].as_word == NULL) ? "" : list->args[2].as_word;
-    return str_from_format("if(%s){%s;}else{%s;}", list->args[0].as_word, list->args[1].as_word, else_statement);
+    char *else_statement = (list->rest[2].as_word == NULL) ? "" : list->rest[2].as_word;
+    return str_from_format("if(%s){%s;}else{%s;}", list->rest[0].as_word, list->rest[1].as_word, else_statement);
 }
 
-char* expand_def(List* list, int *error)
+char* expand_def(const List *list, int *error)
 {
-    char *var_declaration = expand_typed_var(list->args->as_word, error);
+    char *var_declaration = expand_typed_var(list->rest->as_word, error);
 
-    if (!str_is_blank(list->args[1].as_word))
+    if (!str_is_blank(list->rest[1].as_word))
     {
-        return str_from_format("%s=%s;", var_declaration, list->args[1].as_word);
+        return str_from_format("%s=%s;", var_declaration, list->rest[1].as_word);
     }
 
     return str_from_format("%s;", var_declaration);
 }
 
-char* expand_let(List* list, int *error)
+char* expand_let(const List *list, int *error)
 {
-    char *bindings_vector = (list->args[0].as_word + 1);
+    char *bindings_vector = (list->rest[0].as_word + 1);
     bindings_vector[strlen(bindings_vector) - 1] = '\0';
 
     bool in_parentheses = false;
@@ -104,9 +104,9 @@ char* expand_let(List* list, int *error)
 
     DynamicString *body = dstr_new(2<<10);
 
-    for (int i = 1; i < list->argc; i++)
+    for (int i = 1; i < list->rest_c; i++)
     {
-        dstr_cat(body, list->args[i].as_word);
+        dstr_cat(body, list->rest[i].as_word);
         dstr_append(body, ';');
     }
 
@@ -119,12 +119,12 @@ char* expand_let(List* list, int *error)
     return let_block;
 }
 
-char* expand_defn(List* list, int *error)
+char* expand_defn(const List *list, int *error)
 {
-    char *func_declaration = expand_typed_var(list->args->as_word, error);
+    char *func_declaration = expand_typed_var(list->rest->as_word, error);
 
 
-    char *args_vector = (list->args[1].as_word + 1);
+    char *args_vector = (list->rest[1].as_word + 1);
     args_vector[strlen(args_vector) - 1] = '\0';
 
     char *arg;
@@ -140,13 +140,13 @@ char* expand_defn(List* list, int *error)
 
 
     char *function;
-    if (list->args[2].as_word != NULL)
+    if (list->rest[2].as_word != NULL)
     {
         DynamicString *code_block = dstr_new(2<<10);
 
-        for (int i = 2; i < list->argc; i++)
+        for (int i = 2; i < list->rest_c; i++)
         {
-            dstr_cat(code_block, list->args[i].as_word);
+            dstr_cat(code_block, list->rest[i].as_word);
             dstr_append(code_block, ';');
         }
 
@@ -164,30 +164,30 @@ char* expand_defn(List* list, int *error)
     return function;
 }
 
-char* expand_quote(List* list, int *error)
+char* expand_quote(const List *list, int *error)
 {
     DynamicString *code = dstr_new(2<<8);
     dstr_append(code, '(');
 
-    for (int i = 0; i < list->argc; i++)
+    for (int i = 0; i < list->rest_c; i++)
     {
-        dstr_cat(code, list->args[i].as_word);
+        dstr_cat(code, list->rest[i].as_word);
     }
 
     dstr_append(code, ')');
     return dstr_destroy_wrapper(&code);
 }
 
-char* expand_vector(List* list, int *error)
+char* expand_vector(const List *list, int *error)
 {
     DynamicString *code = dstr_new(2<<8);
     dstr_append(code, '{');
 
-    for (int i = 0; i < list->argc; i++)
+    for (int i = 0; i < list->rest_c; i++)
     {
-        dstr_cat(code, list->args[i].as_word);
+        dstr_cat(code, list->rest[i].as_word);
 
-        if (i < list->argc - 1)
+        if (i < list->rest_c - 1)
         {
             dstr_append(code, ',');
         }
@@ -197,51 +197,51 @@ char* expand_vector(List* list, int *error)
     return dstr_destroy_wrapper(&code);
 }
 
-char* expand_defmacro(List* list, int *error)
+char* expand_defmacro(const List *list, int *error)
 {
     return calloc(1, 1);
 }
 
-char* expand_global_wrapper(List* list, int *error)
+char* expand_global_wrapper(const List *list, int *error)
 {
     DynamicString *code = dstr_new(2<<10);
 
-    for (int i = 0; i < list->argc; i++)
+    for (int i = 0; i < list->rest_c; i++)
     {
-        dstr_cat(code, list->args[i].as_word);
+        dstr_cat(code, list->rest[i].as_word);
     }
 
     return dstr_destroy_wrapper(&code);
 }
 
-char* expand_c_preprocessor_command(List *list, int *error)
+char* expand_c_preprocessor_command(const List *list, int *error)
 {
     DynamicString *code = dstr_new(2<<8);
 
     dstr_append(code, '#');
-    dstr_cat(code, list->args->as_word);
+    dstr_cat(code, list->rest->as_word);
 
-    for (int i = 1; i < list->argc; i++)
+    for (int i = 1; i < list->rest_c; i++)
     {
         dstr_append(code, ' ');
-        dstr_cat(code, list->args[i].as_word);
+        dstr_cat(code, list->rest[i].as_word);
     }
 
     dstr_append(code, '\n');
     return dstr_destroy_wrapper(&code);
 }
 
-char* expand_operator(List *list, int *error)
+char* expand_operator(const List *list, int *error)
 {
     DynamicString *operation = dstr_new(2 << 4);
 
     dstr_append(operation, '(');
-    dstr_cat(operation, list->args[0].as_word);
+    dstr_cat(operation, list->rest[0].as_word);
 
-    for (int i = 1; i < list->argc; i++)
+    for (int i = 1; i < list->rest_c; i++)
     {
-        dstr_cat(operation, list->func_name);
-        dstr_cat(operation, list->args[i].as_word);
+        dstr_cat(operation, list->head);
+        dstr_cat(operation, list->rest[i].as_word);
     }
 
     dstr_append(operation, ')');

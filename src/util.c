@@ -34,21 +34,21 @@ int str_is_blank(const char *str)
     return true;
 }
 
-char *str_sep(char **stringp, const char *delim)
+char *str_sep(char **str_ptr, const char *delim)
 {
-    if (*stringp == NULL)
+    if (*str_ptr == NULL)
     {
         return NULL;
     }
 
-    char *token_start = *stringp;
+    char *token_start = *str_ptr;
 
-    *stringp = strpbrk(token_start, delim);
+    *str_ptr = strpbrk(token_start, delim);
 
-    if (*stringp)
+    if (*str_ptr)
     {
-        **stringp = '\0';
-        (*stringp)++;
+        **str_ptr = '\0';
+        (*str_ptr)++;
     }
 
     return token_start;

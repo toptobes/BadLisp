@@ -5,8 +5,7 @@
 
 typedef struct {
     char* name;
-    char* format;
-    char* delimiter;
+    char* (*expander)(List*, int*);
 } Macro;
 
 typedef struct {
@@ -15,10 +14,7 @@ typedef struct {
     Macro** macros;
 } MacroList;
 
-Macro*  create_macro(List *list, int *error);
-char*   expand_macro(List*, Macro*, int*);
-
-MacroList*  macrolist_new(int);
-void        macrolist_add(MacroList*, Macro*);
+MacroList*  macrolist_new(int size);
+void        macrolist_add(MacroList *self, Macro *macro);
 
 #endif

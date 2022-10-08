@@ -7,14 +7,23 @@
 typedef struct ListElement ListElement;
 
 typedef struct List {
-    char *func_name;
-    ListElement *args;
-    size_t argc;
+    char        *head;
+    ListElement *rest;
+    size_t      rest_c;
+    size_t      backing_arr_size;
 } List;
+
+typedef struct Vector {
+    char        *type;
+    ListElement *rest;
+    size_t      rest_c;
+    size_t      backing_arr_size;
+} Vect;
 
 typedef enum {
     WORD,
     LIST,
+    VECT,
 } ListElement_t;
 
 struct ListElement {
@@ -22,13 +31,14 @@ struct ListElement {
     union {
         List *as_list;
         char *as_word;
+        Vect *as_vect;
     };
 };
 
 List* list_new();
-void list_print(List*, int);
+void  list_print(const List *self, int depth);
 
-void list_add_string(List*, const char*, bool);
-void list_add_list(List*, List*);
+void  list_add_word(List *self, const char* word, bool is_func_name);
+void  list_add_list(List *self, List *list_to_nest);
 
 #endif
