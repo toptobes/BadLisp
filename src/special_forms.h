@@ -1,7 +1,7 @@
 #ifndef BAD_LISP_SPECIAL_FORMS_H
 #define BAD_LISP_SPECIAL_FORMS_H
 
-#include "list.h"
+#include "datastructures/list.h"
 
 #define DEF_SPECIAL_FORM(name) char* expand_##name(const List *list, int *error) // NOLINT(bugprone-macro-parentheses)
 

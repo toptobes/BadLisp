@@ -18,28 +18,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80f46ac1-0dab-43d1-b35a-38ec688beb3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/vect.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/vect.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-e4c4afc8af7975cef5f7.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-f13cf6985e9aae7c4842.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-4e9cebb897dcd86d38bd.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-my_other_lisp-Debug-80f1558a92b649cacd7e.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-1fa510b7b60847fa04d3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2022-10-09T00-05-16-0129.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/list.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/list.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/my_other_lisp.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/my_other_lisp.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bad_lisp.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/bad_lisp.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/list.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/list.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/special_forms.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/special_forms.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stack.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/transpile.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/transpile.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/transpile.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/transpile.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/util.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/util.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/playground/playground.bl" beforeDir="false" afterPath="$PROJECT_DIR$/test/playground/playground.bl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vect.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/vect.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vect.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/vect.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,13 +71,19 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;language.cpp.clangd&quot;
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;language.cpp&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\wanna\Documents\GitHub\BadLisp\src\datastructures " />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="my_other_lisp" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="my_other_lisp" TARGET_NAME="my_other_lisp" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="my_other_lisp" RUN_TARGET_NAME="my_other_lisp">
@@ -105,12 +103,24 @@
       <workItem from="1665268724722" duration="1134000" />
       <workItem from="1665273706940" duration="21000" />
       <workItem from="1665273743617" duration="154000" />
-      <workItem from="1665273914338" duration="176000" />
+      <workItem from="1665273914338" duration="230000" />
+      <workItem from="1665274163522" duration="15509000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

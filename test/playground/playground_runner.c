@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "../../src/bad_lisp.h"
-#include "../../src/util.h"
+#include "../../src/util/util.h"
 
 int main(void)
 {

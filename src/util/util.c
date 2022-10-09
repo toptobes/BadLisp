@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <ctype.h>
 #include "util.h"
+#include "dynamic_string.h"
 
 char* str_from_format(const char *format, ...)
 {
@@ -93,4 +94,56 @@ bool char_in(char c, const char *chars)
 bool is_valid_name_char(char c)
 {
     return isalnum(c) || char_in(c, "_-?!");
+}
+
+char* expand_var_declaration(const char *code, int *i, int *error)
+{
+    DynamicString *declaration = dstr_new(2<<5);
+
+    int nested_arr_declarations = 0;
+    int nested_arr_declarations_bal = 0;
+
+    int temp_i = *i;
+    *i += 2;
+
+    char c = code[*i];
+    while (isalnum(c) || char_in(c, "_-?!*[") || (c == ']' && nested_arr_declarations_bal != 0))
+    {
+        switch (c)
+        {
+            case '-':
+                dstr_append(declaration, ' ');
+                break;
+            case '[':
+                nested_arr_declarations++;
+                nested_arr_declarations_bal++;
+                break;
+            case ']':
+                nested_arr_declarations_bal--;
+                break;
+            default:
+                dstr_append(declaration, c);
+                break;
+        }
+        c = code[++(*i)];
+    }
+
+    (*i)--;
+
+    dstr_append(declaration, ' ');
+
+    while (isalnum(code[--temp_i])  || char_in(code[temp_i], "_-?!*["))
+        ;
+
+    while (code[++temp_i] != ':')
+    {
+        dstr_append(declaration, code[temp_i]);
+    }
+
+    for (int j = 0; j < nested_arr_declarations; j++ )
+    {
+        dstr_cat(declaration, "[]");
+    }
+
+    return dstr_destroy_wrapper(&declaration);
 }

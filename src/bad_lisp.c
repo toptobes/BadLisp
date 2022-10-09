@@ -1,8 +1,8 @@
 #include <string.h>
 #include <malloc.h>
 #include "transpile.h"
-#include "fileio.h"
-#include "util.h"
+#include "util/fileio.h"
+#include "util/util.h"
 #include "bad_lisp.h"
 
 static char* get_file_name(const char *str);
@@ -11,8 +11,7 @@ char* transpile_string(const char* code, int* error)
 {
     char *processed_code = preprocess(code, error);
     List *tokenized_code = tokenize(processed_code, error);
-
-    char *transpiled_code = expand(tokenized_code, error);
+    char *transpiled_code = expand_list(tokenized_code, error);
 
     return transpiled_code;
 }

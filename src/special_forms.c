@@ -1,7 +1,7 @@
 #include <string.h>
 #include <malloc.h>
-#include "util.h"
-#include "dynamic_string.h"
+#include "util/util.h"
+#include "util/dynamic_string.h"
 #include "special_forms.h"
 
 static char* expand_typed_var(char *var, int *error)

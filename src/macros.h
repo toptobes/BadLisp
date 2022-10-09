@@ -1,7 +1,7 @@
 #ifndef BAD_LISP_MACROS_H
 #define BAD_LISP_MACROS_H
 
-#include "list.h"
+#include "datastructures/list.h"
 
 typedef struct {
     char* name;

@@ -1,7 +1,6 @@
 #include <string.h>
 #include <malloc.h>
 #include <stdio.h>
-#include "list.h"
 #include "vect.h"
 
 Vect* vect_new()
@@ -27,10 +26,10 @@ void vect_print(const Vect *self, int depth)
     indent(depth-1);
     puts("[");
 
-    indent(depth);
     if (self->type != NULL)
     {
-        printf("Type: %s", self->type);
+        indent(depth);
+        printf("Type: %s\n", self->type);
     }
 
     for (int i = 0; i < self->elems_c; i++)
@@ -74,5 +73,5 @@ void vect_add_list(Vect *self, List *list)
 void vect_add_vect(Vect *self, Vect *nested_vect)
 {
     self->elems[self->elems_c].type = VECT;
-    self->elems[self->elems_c++].as.list = nested_vect;
+    self->elems[self->elems_c++].as.vect = nested_vect;
 }

@@ -1,20 +1,21 @@
 #include <stdbool.h>
 #include <string.h>
 #include <ctype.h>
-#include "dynamic_string.h"
+#include <stdio.h>
+#include "util/dynamic_string.h"
 #include "special_forms.h"
-#include "util.h"
+#include "util/util.h"
 #include "transpile.h"
 
 typedef List *Listp;
 typedef Vect *Vectp;
 
 #define STACK_TYPE Listp
-#include "stack.h"
+#include "util/stack.h"
 #undef STACK_TYPE
 
 #define STACK_TYPE Vectp
-#include "stack.h"
+#include "util/stack.h"
 #undef STACK_TYPE
 
 static char* extract_string(const char *code, int *i);
@@ -70,78 +71,16 @@ char* preprocess(const char *code, int *error)
 
 static List* tokenize_list(const char *code, int *i, int *error);
 static Vect* tokenize_vect(const char *code, int *i, int *error);
-static char* expand_var_declaration(const char *code, int *i, int *error);
+static char* expand_vect(const Vect *vector, int *error);
 
 List* tokenize(const char *code, int *error)
 {
-    ListpStack *stack = Listpstack_create(2<<8);
-    List *current_list = list_new();
-
-    bool is_head = false;
-    bool is_arr_declaration = false;
-
-    DynamicString *current_word = dstr_new(2<<8);
-
-    char c;
-    for (int i = 0; i < strlen(code); i++)
-    {
-        c = code[i];
-
-        is_arr_declaration = is_arr_declaration || c == ':';
-
-        if (c == '\"')
-        {
-            dstr_cpy(current_word, extract_string(code, &i));
-        }
-
-        else if (c == '(' || c == ' ' || c == ',' || c == ')')
-        {
-            if (!str_is_blank(current_word->str))
-            {
-                list_add_word(current_list, current_word->str, is_head);
-                dstr_clear(current_word);
-                is_head = false;
-            }
-
-            if (c == ')')
-            {
-                list_add_list(Listpstack_peek(stack), current_list);
-                current_list = Listpstack_pop(stack);
-            }
-
-            if (c == '(')
-            {
-                Listpstack_push(stack, current_list);
-                current_list = list_new();
-                is_head = true;
-            }
-        }
-
-        else
-        {
-            dstr_append(current_word, c);
-        }
-    }
-
-    Listpstack_complete_destroy(stack);
-
-    List* tokenized_code = current_list->rest->as.list;
-    free(current_list);
-
-    return tokenized_code;
+    int i = 0;
+    return tokenize_list(code, &i, error);
 }
 
-char* expand(const List *list, int *error)
+char* expand_list(const List *list, int *error)
 {
-    for (int i = 0; i < list->rest_c; i++)
-    {
-        if (list->rest[i].type == LIST)
-        {
-            list->rest[i].as.word = expand(list->rest[i].as.list, error);
-            list->rest[i].type = WORD;
-        }
-    }
-
     for (int i = 0; i < NUM_SPECIAL_FORMS; i++)
     {
         bool is_special_form = strcmp(special_forms[i].name, list->head) == 0;
@@ -152,26 +91,65 @@ char* expand(const List *list, int *error)
         }
     }
 
+    for (int i = 0; i < list->rest_c; i++)
+    {
+        if (list->rest[i].type == LIST)
+        {
+            list->rest[i].as.word = expand_list(list->rest[i].as.list, error);
+            list->rest[i].type = WORD;
+        }
+        if (list->rest[i].type == VECT)
+        {
+            list->rest[i].as.word = expand_vect(list->rest[i].as.vect, error);
+            list->rest[i].type = WORD;
+        }
+    }
+
     return expand_function(list, error);
+}
+
+static  char* expand_vect(const Vect *vector, int *error)
+{
+    DynamicString *array = dstr_new(10);
+
+    if (vector->type != NULL)
+    {
+        dstr_cat(array, str_from_format("(%s)", vector->type));
+    }
+
+    dstr_append(array, '{');
+
+    for (int i = 0; i < vector->elems_c; i++)
+    {
+        dstr_cat(array, vector->elems[i].as.word);
+
+        if (i < vector->elems_c - 1)
+        {
+            dstr_append(array, ',');
+        }
+    }
+
+    dstr_append(array, '}');
+    return dstr_destroy_wrapper(&array);
 }
 
 char* expand_function(const List *list, int *error)
 {
-    DynamicString *code = dstr_new_copy(list->head);
-    dstr_append(code, '(');
+    DynamicString *func = dstr_new_copy(list->head);
+    dstr_append(func, '(');
 
     for (int i = 0; i < list->rest_c; i++)
     {
-        dstr_cat(code, list->rest[i].as.word);
+        dstr_cat(func, list->rest[i].as.word);
 
         if (i < list->rest_c - 1)
         {
-            dstr_append(code, ',');
+            dstr_append(func, ',');
         }
     }
 
-    dstr_append(code, ')');
-    return dstr_destroy_wrapper(&code);
+    dstr_append(func, ')');
+    return dstr_destroy_wrapper(&func);
 }
 
 List* tokenize_list(const char *code, int *i, int *error)
@@ -304,54 +282,14 @@ static char* extract_string(const char *code, int *i)
     return dstr_destroy_wrapper(&string);
 }
 
-static char* expand_var_declaration(const char *code, int *i, int *error)
+int main(void)
 {
-    DynamicString *declaration = dstr_new(2<<5);
+    int i = 0;
 
-    int nested_arr_declarations = 0;
-    int nested_arr_declarations_bal = 0;
+    List *list = tokenize_list("(printf (get_fmt) \"Hello!\" [1,2,3]::[int])", &i, NULL);
+    char *code = expand_list(list, NULL);
 
-    char c;
-    int temp_i = *i;
-    *i += 2;
+    puts(code);
 
-    do {
-        switch (c = code[(*i)++])
-        {
-            case '-':
-                dstr_append(declaration, ' ');
-                break;
-
-            case '[':
-                nested_arr_declarations++;
-                nested_arr_declarations_bal++;
-                break;
-
-            case ']':
-                nested_arr_declarations_bal--;
-                break;
-
-            default:
-                dstr_append(declaration, c);
-                break;
-        }
-    } while (isalnum(c) || char_in(c, "_-?!*[") || (c == ']' && nested_arr_declarations_bal > 0));
-
-    dstr_append(declaration, ' ');
-
-    while (code[--temp_i] == '*' || isalnum(code[temp_i]))
-        ;
-
-    while (code[++temp_i] != ':')
-    {
-        dstr_append(declaration, code[temp_i]);
-    }
-
-    for (int j = 0; j < nested_arr_declarations; j++ )
-    {
-        dstr_cat(declaration, "[]");
-    }
-
-    return dstr_destroy_wrapper(&declaration);
+    return 0;
 }
-

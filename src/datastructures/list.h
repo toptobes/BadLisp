@@ -5,6 +5,8 @@
 #include <stdbool.h>
 #include "vect.h"
 
+struct Vect;
+
 typedef struct List {
     char                *head;
     struct ListElement  *rest;
@@ -19,9 +21,9 @@ typedef enum {
 } ListElement_t;
 
 typedef union ListElementCast {
-    List *list;
-    char *word;
-    Vect *vect;
+    List        *list;
+    char        *word;
+    struct Vect *vect;
 } ListElementCast;
 
 typedef struct ListElement {
@@ -34,6 +36,6 @@ void  list_print(const List *self, int depth);
 
 void  list_add_word(List *self, const char* word, bool is_func_name);
 void  list_add_list(List *self, List *nested_list);
-void  list_add_vect(List *self, Vect *vector);
+void  list_add_vect(List *self, struct Vect *vector);
 
 #endif
