@@ -11,7 +11,7 @@
 
 (defn str_from_fmt::char* [fmt::char* ...])
 
-(defn main::int [void]
+(defn main::int [::void]
     ($EXPECT_RESULT "72")
     (if (== NUM_1 (MAX NUM_1, NUM_2))
         (puts "This won't happen")
@@ -25,7 +25,7 @@
     (let [argv::va_list NULL]
         (va_start argv, fmt)
         (let [length::int (vsnprintf NULL, 0, fmt, argv)
-              test::[[char]] "Hello!"
+              test::[char] "Hello!"
               buff::char* (malloc (+ length 1))]
            (vsprintf buff, fmt, argv)
            (va_end argv)

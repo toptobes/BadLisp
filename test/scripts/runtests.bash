@@ -12,7 +12,7 @@ clean_up_and_exit ()
 
 mkdir -p tests/out
 
-gcc test_runner.c ../src/*.c -o transpile_tests || clean_up_and_exit "Error compiling test_runner; ec $?"
+gcc test_runner.c ../src/*.c ../src/datastructures/*.c ../src/util/*.c -o transpile_tests || clean_up_and_exit "Error compiling test_runner; ec $?"
 ./transpile_tests.exe
 
 for test_x in tests/test*.bl
