@@ -55,17 +55,17 @@ build CMakeFiles/my_other_lisp.dir/src/macros.c.obj: C_COMPILER__my_other_lisp_D
   OBJECT_DIR = CMakeFiles\my_other_lisp.dir
   OBJECT_FILE_DIR = CMakeFiles\my_other_lisp.dir\src
 
-build CMakeFiles/my_other_lisp.dir/src/fileio.c.obj: C_COMPILER__my_other_lisp_Debug C$:/Users/wanna/Documents/GitHub/BadLisp/src/fileio.c || cmake_object_order_depends_target_my_other_lisp
-  DEP_FILE = CMakeFiles\my_other_lisp.dir\src\fileio.c.obj.d
+build CMakeFiles/my_other_lisp.dir/src/util/fileio.c.obj: C_COMPILER__my_other_lisp_Debug C$:/Users/wanna/Documents/GitHub/BadLisp/src/util/fileio.c || cmake_object_order_depends_target_my_other_lisp
+  DEP_FILE = CMakeFiles\my_other_lisp.dir\src\util\fileio.c.obj.d
   FLAGS = -g -std=gnu99
   OBJECT_DIR = CMakeFiles\my_other_lisp.dir
-  OBJECT_FILE_DIR = CMakeFiles\my_other_lisp.dir\src
+  OBJECT_FILE_DIR = CMakeFiles\my_other_lisp.dir\src\util
 
-build CMakeFiles/my_other_lisp.dir/src/list.c.obj: C_COMPILER__my_other_lisp_Debug C$:/Users/wanna/Documents/GitHub/BadLisp/src/list.c || cmake_object_order_depends_target_my_other_lisp
-  DEP_FILE = CMakeFiles\my_other_lisp.dir\src\list.c.obj.d
+build CMakeFiles/my_other_lisp.dir/src/datastructures/list.c.obj: C_COMPILER__my_other_lisp_Debug C$:/Users/wanna/Documents/GitHub/BadLisp/src/datastructures/list.c || cmake_object_order_depends_target_my_other_lisp
+  DEP_FILE = CMakeFiles\my_other_lisp.dir\src\datastructures\list.c.obj.d
   FLAGS = -g -std=gnu99
   OBJECT_DIR = CMakeFiles\my_other_lisp.dir
-  OBJECT_FILE_DIR = CMakeFiles\my_other_lisp.dir\src
+  OBJECT_FILE_DIR = CMakeFiles\my_other_lisp.dir\src\datastructures
 
 build CMakeFiles/my_other_lisp.dir/src/transpile.c.obj: C_COMPILER__my_other_lisp_Debug C$:/Users/wanna/Documents/GitHub/BadLisp/src/transpile.c || cmake_object_order_depends_target_my_other_lisp
   DEP_FILE = CMakeFiles\my_other_lisp.dir\src\transpile.c.obj.d
@@ -73,17 +73,17 @@ build CMakeFiles/my_other_lisp.dir/src/transpile.c.obj: C_COMPILER__my_other_lis
   OBJECT_DIR = CMakeFiles\my_other_lisp.dir
   OBJECT_FILE_DIR = CMakeFiles\my_other_lisp.dir\src
 
-build CMakeFiles/my_other_lisp.dir/src/util.c.obj: C_COMPILER__my_other_lisp_Debug C$:/Users/wanna/Documents/GitHub/BadLisp/src/util.c || cmake_object_order_depends_target_my_other_lisp
-  DEP_FILE = CMakeFiles\my_other_lisp.dir\src\util.c.obj.d
+build CMakeFiles/my_other_lisp.dir/src/util/util.c.obj: C_COMPILER__my_other_lisp_Debug C$:/Users/wanna/Documents/GitHub/BadLisp/src/util/util.c || cmake_object_order_depends_target_my_other_lisp
+  DEP_FILE = CMakeFiles\my_other_lisp.dir\src\util\util.c.obj.d
   FLAGS = -g -std=gnu99
   OBJECT_DIR = CMakeFiles\my_other_lisp.dir
-  OBJECT_FILE_DIR = CMakeFiles\my_other_lisp.dir\src
+  OBJECT_FILE_DIR = CMakeFiles\my_other_lisp.dir\src\util
 
-build CMakeFiles/my_other_lisp.dir/src/dynamic_string.c.obj: C_COMPILER__my_other_lisp_Debug C$:/Users/wanna/Documents/GitHub/BadLisp/src/dynamic_string.c || cmake_object_order_depends_target_my_other_lisp
-  DEP_FILE = CMakeFiles\my_other_lisp.dir\src\dynamic_string.c.obj.d
+build CMakeFiles/my_other_lisp.dir/src/util/dynamic_string.c.obj: C_COMPILER__my_other_lisp_Debug C$:/Users/wanna/Documents/GitHub/BadLisp/src/util/dynamic_string.c || cmake_object_order_depends_target_my_other_lisp
+  DEP_FILE = CMakeFiles\my_other_lisp.dir\src\util\dynamic_string.c.obj.d
   FLAGS = -g -std=gnu99
   OBJECT_DIR = CMakeFiles\my_other_lisp.dir
-  OBJECT_FILE_DIR = CMakeFiles\my_other_lisp.dir\src
+  OBJECT_FILE_DIR = CMakeFiles\my_other_lisp.dir\src\util
 
 build CMakeFiles/my_other_lisp.dir/src/special_forms.c.obj: C_COMPILER__my_other_lisp_Debug C$:/Users/wanna/Documents/GitHub/BadLisp/src/special_forms.c || cmake_object_order_depends_target_my_other_lisp
   DEP_FILE = CMakeFiles\my_other_lisp.dir\src\special_forms.c.obj.d
@@ -97,11 +97,11 @@ build CMakeFiles/my_other_lisp.dir/src/bad_lisp.c.obj: C_COMPILER__my_other_lisp
   OBJECT_DIR = CMakeFiles\my_other_lisp.dir
   OBJECT_FILE_DIR = CMakeFiles\my_other_lisp.dir\src
 
-build CMakeFiles/my_other_lisp.dir/src/vect.c.obj: C_COMPILER__my_other_lisp_Debug C$:/Users/wanna/Documents/GitHub/BadLisp/src/vect.c || cmake_object_order_depends_target_my_other_lisp
-  DEP_FILE = CMakeFiles\my_other_lisp.dir\src\vect.c.obj.d
+build CMakeFiles/my_other_lisp.dir/src/datastructures/vect.c.obj: C_COMPILER__my_other_lisp_Debug C$:/Users/wanna/Documents/GitHub/BadLisp/src/datastructures/vect.c || cmake_object_order_depends_target_my_other_lisp
+  DEP_FILE = CMakeFiles\my_other_lisp.dir\src\datastructures\vect.c.obj.d
   FLAGS = -g -std=gnu99
   OBJECT_DIR = CMakeFiles\my_other_lisp.dir
-  OBJECT_FILE_DIR = CMakeFiles\my_other_lisp.dir\src
+  OBJECT_FILE_DIR = CMakeFiles\my_other_lisp.dir\src\datastructures
 
 
 # =============================================================================
@@ -111,7 +111,7 @@ build CMakeFiles/my_other_lisp.dir/src/vect.c.obj: C_COMPILER__my_other_lisp_Deb
 #############################################
 # Link the executable my_other_lisp.exe
 
-build my_other_lisp.exe: C_EXECUTABLE_LINKER__my_other_lisp_Debug CMakeFiles/my_other_lisp.dir/src/macros.c.obj CMakeFiles/my_other_lisp.dir/src/fileio.c.obj CMakeFiles/my_other_lisp.dir/src/list.c.obj CMakeFiles/my_other_lisp.dir/src/transpile.c.obj CMakeFiles/my_other_lisp.dir/src/util.c.obj CMakeFiles/my_other_lisp.dir/src/dynamic_string.c.obj CMakeFiles/my_other_lisp.dir/src/special_forms.c.obj CMakeFiles/my_other_lisp.dir/src/bad_lisp.c.obj CMakeFiles/my_other_lisp.dir/src/vect.c.obj
+build my_other_lisp.exe: C_EXECUTABLE_LINKER__my_other_lisp_Debug CMakeFiles/my_other_lisp.dir/src/macros.c.obj CMakeFiles/my_other_lisp.dir/src/util/fileio.c.obj CMakeFiles/my_other_lisp.dir/src/datastructures/list.c.obj CMakeFiles/my_other_lisp.dir/src/transpile.c.obj CMakeFiles/my_other_lisp.dir/src/util/util.c.obj CMakeFiles/my_other_lisp.dir/src/util/dynamic_string.c.obj CMakeFiles/my_other_lisp.dir/src/special_forms.c.obj CMakeFiles/my_other_lisp.dir/src/bad_lisp.c.obj CMakeFiles/my_other_lisp.dir/src/datastructures/vect.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\my_other_lisp.dir

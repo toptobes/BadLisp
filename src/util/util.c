@@ -147,3 +147,8 @@ char* expand_var_declaration(const char *code, int *i, int *error)
 
     return dstr_destroy_wrapper(&declaration);
 }
+
+int str_index_of_char(const char* str, char c)
+{
+    return strchr(str, c) - str; // NOLINT(cppcoreguidelines-narrowing-conversions)
+}

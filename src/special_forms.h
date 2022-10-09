@@ -11,8 +11,6 @@ DEF_SPECIAL_FORM(   let                      );
 DEF_SPECIAL_FORM(   def                      );
 DEF_SPECIAL_FORM(   defn                     );
 DEF_SPECIAL_FORM(   quote                    );
-DEF_SPECIAL_FORM(   vector                   );
-DEF_SPECIAL_FORM(   defmacro                 );
 DEF_SPECIAL_FORM(   operator                 );
 DEF_SPECIAL_FORM(   global_wrapper           );
 DEF_SPECIAL_FORM(   c_preprocessor_command   );
@@ -30,8 +28,6 @@ static const SpecialForm special_forms[] = {
     { .name = "let",      .expander = expand_let},
     { .name = "defn",     .expander = expand_defn},
     { .name = "quote",    .expander = expand_quote},
-    { .name = "vector",   .expander = expand_vector},
-    { .name = "defmacro", .expander = expand_defmacro},
     { .name = "^root",    .expander = expand_global_wrapper},
     { .name = "#",        .expander = expand_c_preprocessor_command},
     { .name = "+",        .expander = expand_operator},

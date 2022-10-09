@@ -71,7 +71,6 @@ char* preprocess(const char *code, int *error)
 
 static List* tokenize_list(const char *code, int *i, int *error);
 static Vect* tokenize_vect(const char *code, int *i, int *error);
-static char* expand_vect(const Vect *vector, int *error);
 
 List* tokenize(const char *code, int *error)
 {
@@ -91,25 +90,15 @@ char* expand_list(const List *list, int *error)
         }
     }
 
-    for (int i = 0; i < list->rest_c; i++)
-    {
-        if (list->rest[i].type == LIST)
-        {
-            list->rest[i].as.word = expand_list(list->rest[i].as.list, error);
-            list->rest[i].type = WORD;
-        }
-        if (list->rest[i].type == VECT)
-        {
-            list->rest[i].as.word = expand_vect(list->rest[i].as.vect, error);
-            list->rest[i].type = WORD;
-        }
-    }
+    expand_non_words_default(list, 0, error);
 
     return expand_function(list, error);
 }
 
-static  char* expand_vect(const Vect *vector, int *error)
+char* expand_vect(const Vect *vector, int *error)
 {
+    expand_non_words_default((List*) vector, 0, error);
+
     DynamicString *array = dstr_new(10);
 
     if (vector->type != NULL)
@@ -131,6 +120,21 @@ static  char* expand_vect(const Vect *vector, int *error)
 
     dstr_append(array, '}');
     return dstr_destroy_wrapper(&array);
+}
+
+char* expand_non_words_default(const List *list, int from_index, int *error)
+{
+    for (int i = from_index; i < list->rest_c; i++)
+    {
+        if (list->rest[i].type == LIST)
+        {
+            list->rest[i].as.word = expand_list(list->rest[i].as.list, error);
+        }
+        if (list->rest[i].type == VECT)
+        {
+            list->rest[i].as.word = expand_vect(list->rest[i].as.vect, error);
+        }
+    }
 }
 
 char* expand_function(const List *list, int *error)
@@ -286,7 +290,7 @@ int main(void)
 {
     int i = 0;
 
-    List *list = tokenize_list("(printf (get_fmt) \"Hello!\" [1,2,3]::[int])", &i, NULL);
+    List *list = tokenize_list("(let [a::[char] \"1\"] (puts a))", &i, NULL);
     char *code = expand_list(list, NULL);
 
     puts(code);

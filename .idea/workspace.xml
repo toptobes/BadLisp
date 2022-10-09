@@ -19,19 +19,17 @@
   <component name="ChangeListManager">
     <list default="true" id="80f46ac1-0dab-43d1-b35a-38ec688beb3c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2022-10-09T00-05-16-0129.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2022-10-09T00-25-28-0188.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/my_other_lisp.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/my_other_lisp.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bad_lisp.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/bad_lisp.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/list.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/list.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/special_forms.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/special_forms.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/special_forms.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/special_forms.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/transpile.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/transpile.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/transpile.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/transpile.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/util.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/util.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vect.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/vect.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vect.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/vect.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/util.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/util.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/util.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/util.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +75,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\wanna\Documents\GitHub\BadLisp\src\util" />
+      <recent name="C:\Users\wanna\Documents\GitHub\BadLisp\src\datastructures" />
       <recent name="C:\Users\wanna\Documents\GitHub\BadLisp\src\datastructures " />
     </key>
   </component>
@@ -104,7 +104,7 @@
       <workItem from="1665273706940" duration="21000" />
       <workItem from="1665273743617" duration="154000" />
       <workItem from="1665273914338" duration="230000" />
-      <workItem from="1665274163522" duration="15509000" />
+      <workItem from="1665274163522" duration="17465000" />
     </task>
     <servers />
   </component>
