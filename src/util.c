@@ -3,6 +3,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <stdbool.h>
+#include <ctype.h>
 #include "util.h"
 
 char* str_from_format(const char *format, ...)
@@ -75,4 +76,21 @@ void str_remove_surrounding_quotes(char *code)
     {
         memmove(code, code + 1, strlen(code));
     }
+}
+
+bool char_in(char c, const char *chars)
+{
+    for (int i = 0; i < strlen(chars); i++)
+    {
+        if (c == chars[i])
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool is_valid_name_char(char c)
+{
+    return isalnum(c) || char_in(c, "_-?!");
 }

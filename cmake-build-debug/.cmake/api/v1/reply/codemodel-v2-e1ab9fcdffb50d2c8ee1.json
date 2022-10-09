@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "my_other_lisp::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-my_other_lisp-Debug-80f1558a92b649cacd7e.json",
+					"jsonFile" : "target-my_other_lisp-Debug-0c124e44219000eb6dfc.json",
 					"name" : "my_other_lisp",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/gupta_919456/CLionProjects/BadLisp/cmake-build-debug",
-		"source" : "C:/Users/gupta_919456/CLionProjects/BadLisp"
+		"build" : "C:/Users/wanna/Documents/GitHub/BadLisp/cmake-build-debug",
+		"source" : "C:/Users/wanna/Documents/GitHub/BadLisp"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 4
+		"minor" : 3
 	}
 }

@@ -65,10 +65,11 @@ size_t STACK_LENGTH(STACK_TYPE)(STACK(STACK_TYPE) *stack)
 
 
 #define STACK_FCONTAINS(T) WITH_TYPE_PREFIX(stack_fcontains, T)
+#define STACK_EQ_FUNCTION(T) WITH_TYPE_PREFIX(EqualityFunction, T)
 
-typedef int (*EqualityFunction)(STACK_TYPE, STACK_TYPE);
+typedef int (*STACK_EQ_FUNCTION(STACK_TYPE))(STACK_TYPE, STACK_TYPE);
 
-int STACK_FCONTAINS(STACK_TYPE)(STACK(STACK_TYPE) *stack, STACK_TYPE target, EqualityFunction areEqual)
+int STACK_FCONTAINS(STACK_TYPE)(STACK(STACK_TYPE) *stack, STACK_TYPE target, STACK_EQ_FUNCTION(STACK_TYPE) areEqual)
 {
     for (int i = 0; i < stack->size; i++) {
         if (areEqual(stack->backing_array[i], target)) return 1;

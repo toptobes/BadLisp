@@ -33,11 +33,15 @@ void list_print(const List* self, int depth)
         if (self->rest[i].type == WORD)
         {
             indent(depth);
-            puts(self->rest[i].as_word);
+            puts(self->rest[i].as.word);
+        }
+        else if (self->rest[i].type == VECT)
+        {
+            vect_print(self->rest[i].as.vect, depth + 1);
         }
         else
         {
-            list_print(self->rest[i].as_list, depth + 1);
+            list_print(self->rest[i].as.list, depth + 1);
         }
     }
 
@@ -56,19 +60,18 @@ void list_add_word(List *self, const char *word, bool is_func_name)
     else
     {
         self->rest[self->rest_c].type = WORD;
-        self->rest[self->rest_c].as_word = word_cpy;
-        self->rest_c++;
+        self->rest[self->rest_c++].as.word = word_cpy;
     }
 }
 
-void list_add_list(List *self, List *list_to_nest)
+void list_add_list(List *self, List *nested_list)
 {
     self->rest[self->rest_c].type = LIST;
-    self->rest[self->rest_c++].as_list = list_to_nest;
+    self->rest[self->rest_c++].as.list = nested_list;
 }
 
 void list_add_vect(List *self, Vect *vector)
 {
     self->rest[self->rest_c].type = VECT;
-    self->rest[self->rest_c++].as_vect = vector;
+    self->rest[self->rest_c++].as.vect = vector;
 }

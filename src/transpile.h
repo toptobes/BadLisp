@@ -2,6 +2,7 @@
 #define PLAYGROUND_TRANSPILE_H
 
 #include "list.h"
+#include "vect.h"
 #include "macros.h"
 
 char* preprocess(const char *code, int *error);

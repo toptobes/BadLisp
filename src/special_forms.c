@@ -41,17 +41,17 @@ static char* expand_typed_var(char *var, int *error)
 
 char* expand_if(const List *list, int *error)
 {
-    char *else_statement = (list->rest[2].as_word == NULL) ? "" : list->rest[2].as_word;
-    return str_from_format("if(%s){%s;}else{%s;}", list->rest[0].as_word, list->rest[1].as_word, else_statement);
+    char *else_statement = (list->rest[2].as.word == NULL) ? "" : list->rest[2].as.word;
+    return str_from_format("if(%s){%s;}else{%s;}", list->rest[0].as.word, list->rest[1].as.word, else_statement);
 }
 
 char* expand_def(const List *list, int *error)
 {
-    char *var_declaration = expand_typed_var(list->rest->as_word, error);
+    char *var_declaration = expand_typed_var(list->rest->as.word, error);
 
-    if (!str_is_blank(list->rest[1].as_word))
+    if (!str_is_blank(list->rest[1].as.word))
     {
-        return str_from_format("%s=%s;", var_declaration, list->rest[1].as_word);
+        return str_from_format("%s=%s;", var_declaration, list->rest[1].as.word);
     }
 
     return str_from_format("%s;", var_declaration);
@@ -59,7 +59,7 @@ char* expand_def(const List *list, int *error)
 
 char* expand_let(const List *list, int *error)
 {
-    char *bindings_vector = (list->rest[0].as_word + 1);
+    char *bindings_vector = (list->rest[0].as.word + 1);
     bindings_vector[strlen(bindings_vector) - 1] = '\0';
 
     bool in_parentheses = false;
@@ -106,7 +106,7 @@ char* expand_let(const List *list, int *error)
 
     for (int i = 1; i < list->rest_c; i++)
     {
-        dstr_cat(body, list->rest[i].as_word);
+        dstr_cat(body, list->rest[i].as.word);
         dstr_append(body, ';');
     }
 
@@ -121,10 +121,10 @@ char* expand_let(const List *list, int *error)
 
 char* expand_defn(const List *list, int *error)
 {
-    char *func_declaration = expand_typed_var(list->rest->as_word, error);
+    char *func_declaration = expand_typed_var(list->rest->as.word, error);
 
 
-    char *args_vector = (list->rest[1].as_word + 1);
+    char *args_vector = (list->rest[1].as.word + 1);
     args_vector[strlen(args_vector) - 1] = '\0';
 
     char *arg;
@@ -140,13 +140,13 @@ char* expand_defn(const List *list, int *error)
 
 
     char *function;
-    if (list->rest[2].as_word != NULL)
+    if (list->rest[2].as.word != NULL)
     {
         DynamicString *code_block = dstr_new(2<<10);
 
         for (int i = 2; i < list->rest_c; i++)
         {
-            dstr_cat(code_block, list->rest[i].as_word);
+            dstr_cat(code_block, list->rest[i].as.word);
             dstr_append(code_block, ';');
         }
 
@@ -171,7 +171,7 @@ char* expand_quote(const List *list, int *error)
 
     for (int i = 0; i < list->rest_c; i++)
     {
-        dstr_cat(code, list->rest[i].as_word);
+        dstr_cat(code, list->rest[i].as.word);
     }
 
     dstr_append(code, ')');
@@ -185,7 +185,7 @@ char* expand_vector(const List *list, int *error)
 
     for (int i = 0; i < list->rest_c; i++)
     {
-        dstr_cat(code, list->rest[i].as_word);
+        dstr_cat(code, list->rest[i].as.word);
 
         if (i < list->rest_c - 1)
         {
@@ -208,7 +208,7 @@ char* expand_global_wrapper(const List *list, int *error)
 
     for (int i = 0; i < list->rest_c; i++)
     {
-        dstr_cat(code, list->rest[i].as_word);
+        dstr_cat(code, list->rest[i].as.word);
     }
 
     return dstr_destroy_wrapper(&code);
@@ -219,12 +219,12 @@ char* expand_c_preprocessor_command(const List *list, int *error)
     DynamicString *code = dstr_new(2<<8);
 
     dstr_append(code, '#');
-    dstr_cat(code, list->rest->as_word);
+    dstr_cat(code, list->rest->as.word);
 
     for (int i = 1; i < list->rest_c; i++)
     {
         dstr_append(code, ' ');
-        dstr_cat(code, list->rest[i].as_word);
+        dstr_cat(code, list->rest[i].as.word);
     }
 
     dstr_append(code, '\n');
@@ -236,12 +236,12 @@ char* expand_operator(const List *list, int *error)
     DynamicString *operation = dstr_new(2 << 4);
 
     dstr_append(operation, '(');
-    dstr_cat(operation, list->rest[0].as_word);
+    dstr_cat(operation, list->rest[0].as.word);
 
     for (int i = 1; i < list->rest_c; i++)
     {
         dstr_cat(operation, list->head);
-        dstr_cat(operation, list->rest[i].as_word);
+        dstr_cat(operation, list->rest[i].as.word);
     }
 
     dstr_append(operation, ')');
